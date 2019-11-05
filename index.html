@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>*{margin:0;padding:0;overflow:hidden;}</style>
+  </head>
+  <body>
+    <script type="text/javascript" src="ShaderPlayerWebGL2.js"></script>
+    <script type="text/javascript">
+      player = new ShaderPlayerWebGL2();
+      player.set_container(document.body);
+      player.set_width(window.innerWidth);
+      player.set_height(window.innerHeight);
+      fetch("vertex_shader.glsl").then((response) =>
+      {response.text().then((text) => {
+      player.set_vertex_shader(text);
+      })});
+      fetch("sketch.glsl").then((response) =>
+      {response.text().then((text) => {
+      player.set_code(text);
+      })});
+
+
+      /*
+      There is a method to add textures in ShaderPlayerWebGL2, look in the code
+      */
+    </script>
+  </body>
+</html>
